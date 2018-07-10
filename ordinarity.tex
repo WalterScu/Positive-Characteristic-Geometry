@@ -1,0 +1,102 @@
+% !TEX root=crystal.tex
+\subsection{Ordinary Varieties}
+\begin{secdefn}
+Let $X$ be a smooth, proper variety over field $k$ with $\Char k > 0$. We say $X$ is \textbf{ordinary} if it satisfies
+\begin{align}
+& &H^i(X,B_X^j)=0 & &\text{for all } i \geq 0, j > 0&
+\end{align}
+where $B^j_X = d(\Omega^{j-1}_{X/k})$ is the sheaf of boundaries of algebraic de Rham complex in degree $j$.
+\end{secdefn}
+Equivalently, $H^i(X',F_* B_X^i)=$ for all $i \geq 0,j>0$ implies  ordinarity of $X$ \footnote{\textcolor{red}{by Leray spectral sequence}}. where $F$ is relative Frobenius morphism $F=F_{X/k}: X \to X'$. 
+
+More numerical description of ordinarity according to property \ref{ordcor}:
+
+If $H^q(X,W\Omega_X^r)$ are all torsion free, then $X$ is ordinary if and only if for every $q$, Newton polygon defined by the slopes of action of Frobenius on $H^q_{\text{crys}}(X/W)$ is equal to Hodge polygon.
+
+Here we list some properties of ordinary varieties.
+\begin{secprop}
+	Let $X$ be variety over perfect field $k$. If $X$ is ordinary and with trivial canonical bundle, then $X$ is splitting.
+\end{secprop}
+\begin{proof}
+	Homological algebra tells us that exact sequence 
+	\[
+	0 \to \sheaf{X} \to F_* \sheaf{X} \to (B_X^1) \to 0
+	\]
+	lies in extension group $\ext^1((B_X^1),\sheaf{X})$ as extension class. Denote this class as $\xi$. If $\xi =0$ then this sequence splits. Hence if this extension group vanishes then it has no choice but splits. But we have $$H^1(X,(B_X^1)^{\vee}) = \ext^1((B_X^1),\sheaf{X})$$ and
+	\[
+	H^1(X,(B_X^1)^{\vee}) \cong H^{n-1}(X,B_X^1 \otimes \omega_X)^* \cong H^{n-1}(X, B_X^1)^*.
+	\]Hence it actually vanishes if $X$ is ordinary.
+\end{proof}
+
+\begin{secprop}
+\label{sec3}
+	If $S$ is algebraic surface over positive characteristic perfect field, then $S$ being $F$-split $\Rightarrow$ ordinary.
+\end{secprop}
+\begin{proof}
+	As Cartier isomorphism is actually trace map in Grothendieck duality, we have following two perfect pairings:
+	\begin{align}
+		\label{pair1}&F_* \sheaf{X} \otimes F_* \Omega_X^2 \to \Omega_X^2\\
+		&F_* \Omega_X^1 \otimes F_*\Omega_X^1 \to \Omega_X^2
+	\end{align}
+	The pairing \ref{pair1} induces perfect pairings
+	\begin{align}
+	\label{pair2} (B_X^1) \otimes (B_X^2) \to \Omega_X^2& & \sheaf{X} \otimes \Omega_X^n \to \Omega_X^2
+	\end{align}
+	by interchange following exact sequences with exact functor $\hom(-, \Omega_X^2) = \hom (-, \sheaf{X})$.
+	\[
+	\begin{aligned}
+	0 \to \sheaf{X} \to F_* \sheaf{X} \to (B_X^1) \to 0 \\
+	0 \to (B_X^2) \to F_* \Omega_X^2 \to \Omega_X^2 \to 0
+	\end{aligned}	
+	\]
+	Hence with lemma \ref{lemma1}
+	\begin{equation}
+		H^i(X, (B_X^2)) \cong H^{n-i}(X,(B_X^2)^{\vee} \otimes \Omega_X^2)^* \cong H^{n-i}(X, B^1_X)^*=0
+	\end{equation}
+	for all $0 \leq i \leq n$. This completes the proof.
+\end{proof}
+\begin{seccor}
+	If $X$ is K3 surface, then $X$ being $F$-split $\Leftrightarrow$ ordinary.
+\end{seccor}
+
+Actually, we can genenralize for perfect pairings appearing in proof of \ref{sec3}. As in \cite{}, we use following notations
+\begin{align}
+	B_{m} \Omega^i_X := C^{-1}(B_{m-1} \Omega^i_X) & & B_1 \Omega^i_X :=(B_X^i) & & B_0 \Omega^i_X = \underline{0} \\
+	Z_{m} \Omega^i_X := C^{-1}(Z_{m-1} \Omega^i_X) & & Z_1 \Omega^i_X :=(Z_X^i)& & Z_0 \Omega^i_X = \Omega^i_X
+\end{align}
+Note that we have following inclusion sequence
+\begin{equation}
+\underline{0}= B_0 \Omega^i_X \subset B_1 \Omega^i_X \subset \cdots \subset B_m \Omega^i_X \subset \cdots Z_m \Omega^i_X \subset Z_{m-1} \Omega^i_X \subset \cdots \subset Z_0 \Omega^i_X = \Omega^i_X
+\end{equation}
+$B_{m} \Omega^i_X $ and $Z_{m} \Omega^i_X$ can be viewed as locally free submodules of $F^m_*(\Omega^i_X)$.This implies that 
+\begin{align}
+&0 \to B_m \Omega^i_X \to F^m_* \Omega^i_X \to F_* ^m \Omega^i_X \big/ B_m \Omega^i_X \to 0 \\
+\label{exact4}&0 \to Z_m \Omega^{n-i}_X \to F^m_* \Omega^{n-i}_X \to F^m_* \Omega^{n-i}_X \big/Z_m \Omega^{n-i}_X \to 0
+\end{align}
+are exact. $\Hom (-,\Omega^n_X)$ is exact since $\Omega^n_X$ is trivial. Applying it on \ref{exact4}, we get exact sequence 
+\begin{equation}
+0 \to \Hom (F^m_* \Omega^{n-i}_X\big/ Z_m \Omega^{n-i}_X , \Omega^n_X) \to \Hom(F^m_* \Omega_X^{n-i}, \Omega^n_X) \to \Hom(Z_m \Omega^{n-i}_X , \Omega^n_X) \to 0
+\end{equation}
+Since the middle term is isomorphism to $F_*^m \Omega^i_X$ induced from perfect pairing 
+\begin{equation}
+F_*^m \Omega^i_X \otimes F_*^m \Omega^{n-i}_X \to \Omega_X^n
+\end{equation}
+we can get following two canonical perfect pairings
+\begin{align}
+\label{pair3} B_m \Omega^i_X \otimes F_*^m \Omega_X^{n-i}\big/Z_m \Omega^{n-i}_X \to \Omega_X^n \\
+Z_m \Omega_X^{n-i} \otimes F^m_* \Omega_X^i \big/ B_m \Omega^i_X \to \Omega^n_X
+\end{align}
+Note that we have canonical isomorphism $F^m_* \Omega^{n-i}\big/ Z_m \Omega^{n-i}_X \cong B_m \Omega_X^{n-i+1}$ induced by differential $d: \Omega_X^{n-i} \to \Omega_X^{n-i+1}$. Hence \ref{pair3} becomes $B_m \Omega_X^i \otimes B_m \Omega_X^{n-i+1} \to \Omega^n_X$.In particular, taking $i=1, n=2, m=1$ we get perfect pairing \ref{pair2}.
+
+Notice that we have exact sequence
+\[
+0 \to B_1 \Omega_X^1 \to B_{m+1} \Omega_X^1 \xlongrightarrow{C} B_{m} \Omega_X^1 \to 0
+\]
+Hence we have surjective maps $C: H^n(X,B_{m+1} \Omega_X^1) \to H^n(X,B_m \Omega_X^1)$. So we get a projective system, then taking inverse limit
+\[
+H^n(X,B \Omega_X^1):=\lim_m H^n(X,B_m \Omega_X^1)
+\]
+\begin{secdefn}
+	 The dimension of $H^n(X,B \Omega_X^1)$ is called $b$-number of $X$.
+\end{secdefn}
+In next subsection, we will use these to give explicit formula for height of Calabi-Yau varieties over positive characteristic which is also called $h$-number in \cite{}.

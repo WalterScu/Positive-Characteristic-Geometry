@@ -1,0 +1,52 @@
+\ProvidesPackage{notestemplate}
+% AMS packages for specialized mathematical environments and fonts.
+\RequirePackage{
+%,amsmath
+,amsthm
+,amsfonts
+,amssymb
+,extarrows
+}
+%Other packages
+\RequirePackage{
+	enumerate
+	%,nicefrac % Formats in-line fractions to look nicer (such as 1/3).
+	,pgf,tikz % Allows pictures to be defined and drawn in LaTeX.
+	,geometry % For defining page geometry, such as margins, header, etc.
+	,fancyhdr  %
+	,graphicx % Allows images to be included (using \includegraphics).
+	%,pdfpages % Allows entire PDF files to be inserted into the final document.
+	%,refstyle % Combined with refstyle.def, defines specialized label and reference commands.
+}
+%\RequirePackage[colorlinks]{hyperref}
+%Documents format
+\geometry{top=2.5cm,bottom=2cm,left=2cm,right=2cm}
+\pagestyle{plain}
+
+%New math commands
+\renewcommand{\hom}{\text{Hom}}
+\newcommand{\spec}{\text{Spec }}
+\DeclareMathOperator{\ext}{Ext}
+\newcommand{\id}[1]{\text{id}_{#1}}
+\newcommand{\op}[1]{#1^{\text{op}}}
+\newcommand{\subideal}{\vartriangleleft}
+\newcommand{\ff}[1]{\mathfrak{#1}}
+\newcommand{\ann}{\text{ann}}
+\newcommand{\sheaf}[1]{\mathcal{O}_{#1}}
+\newcommand{\pica}{\text{Pic}}
+%\newcommand{\res}{\text{Res}}
+\DeclareMathOperator*{\res}{Res}
+%\newcommand{\im}{\text{Im}}
+\DeclareMathOperator*{\im}{Im}
+%\newcommand{\vol}{\text{Vol}}
+\DeclareMathOperator*{\vol}{Vol}
+\DeclareMathOperator*{\hodge}{*}
+\DeclareMathOperator*{\pch}{Ch^{+}}
+\DeclareMathOperator{\gr}{Gr}
+\DeclareMathOperator{\hyper}{\mathbb{H}}
+\DeclareMathOperator{\hdg}{Hdg}
+\DeclareMathOperator{\clq}{cl_\mathbb{Q}}
+\DeclareMathOperator{\Char}{char}
+\DeclareMathOperator{\cl}{cl}
+\DeclareMathOperator{\Hom}{\mathcal{H}om}
+\DeclareMathOperator{\rank}{rank}

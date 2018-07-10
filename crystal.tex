@@ -1,0 +1,362 @@
+\documentclass[11pt,a4paper]{scmsnotes}
+\usepackage[utf8]{inputenc}
+\usepackage[screen]{pdfscreen}
+%\usepackage[all]{xy}
+%\usepackage{marginnote}
+\usepackage{notestemplate}
+%\usepackage{fontspec}
+%\setmainfont{Times New Roman}
+\usepackage{tikz-cd}
+%\usepackage{times}
+%\usepackage{euler}
+\title{Positive Characteristic Geometry}
+\author{Chow.}
+\begin{document}
+\maketitle
+%
+\section{Witt Vector cohomology}
+Let $p$ be a prime number. We then define the Witt polynomials ($\mathbb{Z}$-coefficient polynomials) respect to $p$ as follows
+\[
+\begin{aligned}
+	W_0(x_0)&:= x_0 &\\
+	W_1(x_0,x_1)&:= x_0^p + p x_1&\\
+	\cdots&\\
+	W_n(x_0, \cdots, x_n)&:= \sum_{i=0}^{n}p^i{x_i}^{p^{n-i}}
+\end{aligned}
+\]
+Let $x=(x_0, \cdots, x_n), y= (y_0, \cdots, y_n)$. From Serre's theorem \cite{}, there are polynomials $S_0, \cdots, S_n$, $P_0, \cdots, P_n$ with $2n+2$ variables satisfying 
+\[
+\begin{aligned}
+&W_n(x) + W_n(y) = W_n (S_0(x,y), \cdots, S_n(x,y))\\
+&W_n(x) \cdot W_n(y)= W_n(P_0(x,y), \cdots, P_n(x,y))
+\end{aligned}
+\]
+For example, 
+\[
+\begin{aligned}
+&S_0(x,y)=x_0 + y_0 & & S_1(x,y)=x_1 + y_1 + \frac{x_0^p+y_0^p - (x_0 +y_0)^p}{p}&\\
+&P_0(x,y)=x_0 y_0 & & P_1(x,y)= y_0^p x_1+ y_1 x_0^p + px_1 y_1
+\end{aligned}
+\]
+Now, we define a new ring structure on $n$-couple for ring $R$, which is denoted by $\mathcal{W}_n(R)$. For all $X,Y in \mathcal{W}_n(R)$
+\[
+\begin{aligned}
+&X + Y= (S_0(X,Y),\cdots, S_{n-1}(X,Y))\\
+&X \cdot Y= (P_0(X,Y),\cdots, P_{n-1}(X,Y))
+\end{aligned}
+\]
+
+Let $X$ be non-singular variety over perfect field $k$ of characteristic $p > 0$ with dimension $n$. $\mathcal{W}_k$ is sheaf of Witt vectors of lenght $k$.
+
+We have three operators
+\begin{itemize}
+\item Frobenius $F \colon \mathcal{W}_k \sheaf{X} \to \mathcal{W}_k \sheaf{X}$ locally defined by $(a_0, \cdots , a_{k-1}) \mapsto (a^p_0, \cdots, a^p_{k-1})$;
+\item Verschieburg $V \colon \mathcal{W}_k \sheaf{X} \to \mathcal{W}_{k+1} \sheaf{X}$ locally defined by $(a_0, \cdots, a_{k-1}) \mapsto (0, \cdots, a_{k-1})$;
+\item Restriction $R \colon \mathcal{W}_{k+1}\sheaf{X} \to \mathcal{W}_k \sheaf{X}$ locally defined by $(a_0, \cdots, a_n) \mapsto (a_0, \cdots, a_{n-1})$
+\end{itemize}
+It is well-known that 
+\[
+RVF= RFV =FRV = p \cdot \id{\mathcal{W}_k \sheaf{X}}
+\]
+where the "$\cdot$" is multiplication in $\mathcal{W}_k \sheaf{X}$.
+
+Let $\mathcal{W}(M):= \lim_{k} \mathcal{W}_{k+1}(M) \xlongrightarrow{R} \mathcal{W}_{k}(M)$ inverse limit of projective system induced by $R$. For example, since $W_k(\mathbb{F}_p) = \mathbb{Z}/p^k \mathbb{Z}$, we have 
+$\mathcal{W}(\mathbb{F}_p) = \mathbb{Z}_p$ the $p$-adic integer ring. 
+
+We have following two canonical exact sequence of $\sheaf{X}$-module
+\begin{align}
+	&0 \to \mathcal{W}_{k-1}\sheaf{X} \xlongrightarrow{V} \mathcal{W}_k \sheaf{X} \xrightarrow{R^{k-1}} \sheaf{X} \to 0\\
+	&0 \to \sheaf{X} \to \mathcal{W}_{k}\sheaf{X} \xlongrightarrow{R} \mathcal{W}_{k-1} \sheaf{X} \to 0
+\end{align} 
+Witt vector cohomology is defined as 
+\[
+H^n(X,\mathcal{W}\sheaf{X})= \lim_{k} H^n(X,\mathcal{W}_k \sheaf{X})
+\]
+in projective system $[R:H^n(X,\mathcal{W}_{k+1}\sheaf{X}) \to H^n(X,\mathcal{W}_{k}\sheaf{X})]$.
+
+\section{Varieties in positive characteristic under Frobenius}
+Let $X$ be a scheme over $\mathbb{F}_p$. $F_X$ is called \textbf{absolute Frobenius morphism} of $X$ which is induced by $f \mapsto f^p$ on affine covers. Frobenius map $\sigma$ of field $\mathbb{F}_p$ induces endmorphism of $\spec \mathbb{F}_p$. It is also denoted by $F_p$. Furthermore, we have following base change
+
+\begin{equation}
+\begin{tikzcd}
+X \arrow[rrd, "F_X", bend left] \arrow[rd, "F" description, dashed] \arrow[rdd, "f"', bend right] &  &  \\
+& X' \arrow[d,"f'"] \arrow[r] & X \arrow[d, "f"] \\
+& \spec \mathbb{F}_p \arrow[r, "F_p"] & \spec \mathbb{F}_p
+\end{tikzcd}
+\end{equation}
+Since $F_X$ and $F_p$ are homeomorphisms on underlying topological space of spectrum $\spec \mathbb{F}_p$, $F$ is also homeomorphism on underlying space. Hence it is easy to see that $F_X$ is affine morphism of finite type. For all $\sheaf{X}$-module $\mathcal{F}$ on $X$, $(F_X)_*(\mathcal{F})$ is same to $\mathcal{F}$ as sheaves over abelian groups although the their $\sheaf{X}$-module structures are different. 
+Let $B^i_X= \im (d: \Omega^{i-1}_X \to \Omega^{i}_X)$, then we have following exact sequences from definitions of Frobenius.
+\begin{equation}
+	\begin{tikzcd}
+		 &\sheaf{X} \arrow[r, "F_X"] &\sheaf{X} \arrow[r,"d"] &B^1_X\\
+	\end{tikzcd}
+	\begin{tikzcd}
+	&\sheaf{X'} \arrow[r,"F"]&F_*\sheaf{X} \arrow[r,"F_*d"]& F_* B^1_X\\
+	\end{tikzcd}
+\end{equation}
+\begin{ex}
+	Let $Y= \spec A , X = \mathbb{A}^n_Y$. We have
+	\[ 
+	\begin{aligned}
+		\sheaf{X'}&= (A,F_A) \otimes_A A[x_1, x_2, \cdots,x_n] \\
+				&\cong A^p[x_1,x_2,\cdots,x_n]
+	\end{aligned}
+	\]
+\end{ex}
+If $k$ is perfect field, i.e.\ Frobenius map $\sigma: k \to k$ is automorphism, then absolute Frobenius morphism is automorphism of scheme $\spec k$. Hence the pull-back $X' \to X$ is also isomorphism and under isomorphism relative Frobenius $F$ do same as absolute Frobenius $F_X$ on $X$. So we also denote $F_X$ by $F$ in this case without confusion.
+\subsection{F-split}
+\begin{secdefn}
+	The $k$-scheme of characteristic $p>0$ is called Frobenius split if exact sequence from Cartier isomorphism
+	\begin{equation}
+		\begin{tikzcd}
+		\label{exact1}
+		& 0 \arrow[r]& \sheaf{X'} \arrow[r,"F^{\#}"] &F_* \sheaf{X} \arrow[r,"d"] & F_* B_X^1\arrow[r]& 0
+		\end{tikzcd}
+	\end{equation}
+	is split exact.
+\end{secdefn}
+
+If $k$ is perfect, then we have absolute Cartier isomorphism $C^{-1}_{\text{abs}}$, which induce following exact sequences
+\begin{align}
+\label{exact2}&0 \to \sheaf{X} \to F_*\sheaf{X} \to F_*B_X^1 \to 0\\
+&0 \to F_* B_X^n \to F_*\Omega^n_X \xlongrightarrow{C_{\text{abs}}} \Omega^n_{X} \to 0
+\end{align}
+Under assumption that $k$ is perfect, $X$ is Frobenius split if and only if \ref{exact2} is split. This is because in this condition, base change of $X$ along Frobenius morphism of field $k$ is isomorphic to $X$.
+To simplify the notation, we denote $F_*B_X^i$ or $(F_X)_* B_X^i$ by $(B_X^i)$.
+
+Suppose $\xi$ is corresponding extension class of \ref{exact1} in $\ext^1_{\sheaf{X'}}((B_X^1), \sheaf{X'})$. It follows that $X$ is $F$-split if and only if $\xi =0 $. In particular, if extension group $\ext^1_{\sheaf{X'}}((B_X^1), \sheaf{X'})$ vanishes, then \ref{exact1} must be split. Writing it in cohomology form, we have $H^1(X', (B_X^1)^{\vee}) = \ext^1_{\sheaf{X'}}((B_X^1), \sheaf{X'})$.
+
+\begin{seclemma}\label{lemma1}
+	If $X$ is $F$-split, then $H^i(X,B_X^1)=0$ for all $i\geq0$.
+\end{seclemma}
+\begin{proof}
+	Exact sequence \ref{exact2} being splitting implies it induces isomorphism 
+	\[
+	\sheaf{X} \oplus (B_X^1) \cong (F_X)_*\sheaf{X}
+	\]
+	Hence at cohomolgy level, we have 
+	\begin{equation}
+		H^i(X,\sheaf{X}) \oplus H^i(X,(B_X^1)) \cong H^i(X,(F_X)_* \sheaf{X})
+	\end{equation}
+	while $H^i(X,(F_X)_* \sheaf{X}) = H^i(X, \sheaf{X})$ for all $i\geq 0$, hence we have $\dim H^i(X,(B_X^1))=0$, so that $H^i(X,B_X^1)$ vanishes.
+\end{proof}
+\subsection{Slope Spectral Sequence}
+Slope spectral sequence is constructed in works \cite{} of Luc Illusie on de Rham-Witt cohomology and comparasion to crystalline cohomology. It plays essential role in de Rham-Witt cohomology as Hodge-de Rham spectral sequence in de Rham cohomology. Actually, this spectral sequence gives explict descibtion of $F$-crystal structure on crystalline cohomology with de Rham-Witt cohomology. 
+
+Let $X$ be smooth variety over perfect field $k$ with characteristic $p >0$. We have following de Rham-Witt complexes according to Illusie's works
+\begin{equation}
+\mathcal{W} \Omega^*_{X}:= [\mathcal{W}\sheaf{X} \to \mathcal{W}\Omega^1_X \to \cdots \to \mathcal{W} \Omega^n_X ]
+\end{equation}
+We have canonical filtration on $\mathcal{W} \Omega^*_X$ as Hodge filtration in Hodge theory such that
+\begin{equation}
+F^i \mathcal{W}\Omega^*_X = \mathcal{W} \Omega^{\geq i}= [0 \to \cdots \to 0 \to \mathcal{W}\Omega^i_X \cdots \to \mathcal{W} \Omega^n_X]
+\end{equation}
+Filtration ${F^i \mathcal{W}\Omega^* X }$ induces spectral sequence
+\begin{equation}
+E^{i,j}_1 \cong H^{j}(X, \mathcal{W} \Omega^i_X) \Rightarrow \mathbb{H}^n(X, \mathcal{W}\Omega^*_X)
+\end{equation}
+which is called \textbf{slope spectral sequence} of $X$.Illusie proved that hypercohomology $H^n(X, \mathcal{W} \Omega^*_X)$ computes crystalline cohomology $H^n_{\text{crys}}(X/W)$ and $E^{i,j}_1 \otimes K$ without $p$-torsion. Hence 
+\begin{secthm}[Illusie]
+If $H^j(X, \mathcal{W} \Omega^i_X)$ are all torsion-free, then the slope spectral sequence 
+\begin{equation}
+E^{i,j}_1 \cong H^{j}(X, \mathcal{W} \Omega^i_X) \Rightarrow \mathbb{H}^n(X, \mathcal{W}\Omega^*_X)
+\end{equation}
+degenerates in degree 1.
+\end{secthm}
+As name of this spectral sequence, it captures information of "slope" of $F$-crystal on $H^*_{\text{crys}}(X/W) \otimes K$. We have following corollary
+
+\begin{seccor}[Bloch]
+For any $i$, canonical homomorphism $H^*(X,\mathcal{W} \Omega^{\geq i}_X) \hookrightarrow H^*_{\text{crys}}(X/W)$ and $H^*_{\text{crys}}(X/W) \twoheadrightarrow H^*(X,\mathcal{W} \Omega^{\leq i}_X)$ induces isomorphism
+\begin{align}
+H^*(X,\mathcal{W} \Omega_X^{\geq i}) \otimes K &\xrightarrow{\sim} (H^* (X/W) \otimes K )_{\geq i}\\
+(H^*_{\text{crys}} (X/W) \otimes K)_{[0,i[} &\xrightarrow{\sim} H^*(X, \mathcal{W} \Omega^{< i}_X) \otimes K  
+\end{align}
+\end{seccor}
+\begin{proof}
+We have following exact sequence 
+\[
+0 \to \mathcal{W} \Omega^{\geq i}_X \to \mathcal{W} \Omega^*_X \to \mathcal{W} \Omega^{\leq i-1}_X \to 0 
+\]
+Since connection map $0=d_1 \otimes K: H^{*-1}(X, \mathcal{W} \Omega^{\leq i-1}) \to H^*(X,\mathcal{W} \Omega^{\geq i}) $, upper exact sequence induces exact sequence of $F$-isocrystals
+\[
+0 \to H^*(X, \mathcal{W} \Omega^{\geq i}_X) \otimes K \to H^*_{\text{crys}}(X/W) \otimes K \to H^*(X, \mathcal{W} \Omega^{\leq i-1}_X)\otimes K \to 0
+\]
+We have already known that $F(\im H^*(X,\mathcal{W} \Omega^{\geq i}_X)) \subseteq p^i H^*_{\text{crys}}(X/W)$. Hence the slope of $H^*(X,\mathcal{W} \Omega^{\geq i}_X)$ is greater than $i$.
+On other hand, 
+\[
+H^*(X, \mathcal{W} \Omega^{\leq i-1}_X) \cong  W_\sigma [[V]][F] \big/ (FV-p^{i},VF -p^{i})
+\]
+It implies that slope of $H^*(X,\mathcal{W} \Omega^{\leq i-1}_X)$ strictly less than $i$. Hence we can conclude the proof.  
+\end{proof}
+
+On other hand, we can describe Hodge polygon and Newton polygon explicitly. In fact, there is following theorem due to Ogus.
+\begin{secthm}
+	Let 
+	\begin{itemize}
+		\item $h^i = h^{i,n-i} = \dim_k H^{n-i}(X, \Omega^i_X)$
+		\item $a_i = \dim_k H^{n-i}(X,\mathcal{W} \Omega_X^i) \big/VH^i(X,\mathcal{W} \Omega_X^i)$
+		\item $a_i' = \dim_k H^{n-i}(X,\mathcal{W} \Omega_X^i)\big/FH^{n-i}(X,\mathcal{W} \Omega_X^i)$
+	\end{itemize}
+then
+\[
+\begin{aligned}
+a'_{n}=0& &h^0 = a_0& &h^i= a'_{i-1}+a_i(1 \leq i \leq n) 
+\end{aligned}
+\]
+and
+\[
+\begin{aligned}
+& Hdg(t)= (\sum_{i\leq t}h^i, \sum_{i\leq t} i h^i)&\\
+& Nwt(t)= Hdg(t) + (a'_{t-1}, ta'_{t-1})&
+\end{aligned}
+\]
+\end{secthm}
+\begin{seccor}
+	\label{ordcor}
+	If $H^j(X,\mathcal{W} \Omega_X^i)$ is torsion-free for all $i,j$, then $X$ being ordinary is equivalent to condition that $Nwt(t)= Hdg(t)$.
+\end{seccor}
+\begin{proof}
+	TBA
+\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{ordinarity}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Formal group law}
+In algebraic geometry, \textbf{formal group} is referred by group object in category of formal schemes. If $\mathcal{G}$ is a functor from Artin algebras to groups which is left exact, then $\mathcal{G}$ is representable by formal group. $\mathcal{G}$ is called a \textbf{formal group law}.
+Let 
+\[
+F_S^r(S)= \ker \left\{ H^r(X \times S, \mathbb{G}_m) \to H^r(X,\mathbb{G}_m)\right\}
+\]
+the cohomology is \'etale cohomology here. Theorem of Artin and Mazur say that this functor $F^r_S: \text{Art}_k \to \text{Ab}$ is pro-representable by formal group $\Phi_X$ if $X$ is proper Calabi-Yau with dimension $n$ over perfect field $k$. Moreover, we have that tangent space of $\Phi_X$ is isomorphic to $H^n(X, \sheaf{X})$. Hence since Calabi-Yau variety is with geometric genus 1, e.g. $\dim_k H^n(X, \sheaf{X})=1 $, $\Phi_X$ is formal group of dimension 1.  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Height of Calabi-Yau varieties}
+Let $X$ be Calabi-Yau variety over perfect field $k$ with characteristic $p$ and $\Phi_X$ be its formal Brauer group. Then we have following theorem 
+\begin{secthm}\label{thm2.5}
+If $X$ is of dimension $n$, then we have following formula for hegiht
+\begin{equation}
+h(\Phi_X) = \min \big\{ i \geq 1 : [F: H^n(W_i \sheaf{X}) \to H^n(W_i \sheaf{X})] \neq 0 \big\}
+\end{equation}
+\end{secthm}
+Before giving the proof of this theorem, we will prepare some properties of Witt vector cohomology of Calabi-Yau varieties.
+\begin{secprop}
+	Let X be Calabi-Yau variety over perfect field $k$ of dimension $n$. We have
+	\begin{enumerate}
+		\item $H^i(X, \mathcal{W}_j\sheaf{X}) =0$ for all $j > 0, 1 \leq i \leq n-1$. Furthermore, $H^i(X, \mathcal{W}\sheaf{X})=0$;
+		\item Pull-back of $R$ on cohomology $R: H^n(X,\mathcal{W}_k \sheaf{X}) \to H^n(X,\mathcal{W}_k \sheaf{X})$ is surjective with kernel $H^n(X,\sheaf{X})$;
+		\item Assume that for some $0<k \leq n$ the map $F: H^k(X,\mathcal{W}_j \sheaf{X}) \to H^k(X,\mathcal{W}_j \sheaf{X})$ vanishes, then for all $0 \leq i \leq j$ the map $F \colon H^k(X,\mathcal{W}_i \sheaf{X}) \to H^k(X,\mathcal{W}_i \sheaf{X})$ vanishes too. Moreover, for all $H^n(X,\mathcal{W}_i \sheaf{X})$ is vector space over $K$;
+		\item 
+		\[
+		0 \to H^n(X, \mathcal{W}_{i-1}\sheaf{X}) \xlongrightarrow{V} H^n(X,\mathcal{W}_i \sheaf{X})\xlongrightarrow{R^{n-1}} H^n(X,\sheaf{X}) \to 0
+		\]
+		and
+		\[
+		0 \to H^n(X,\mathcal{W} \sheaf{X}) \xlongrightarrow{V'} H^n(X,\mathcal{W}\sheaf{X}) \xlongrightarrow{R'} H^n(X,\sheaf{X}) \to 0
+		\]
+		are both exact.
+	\end{enumerate}
+\end{secprop}
+\begin{proof}
+	\begin{enumerate}
+		\item Note that we have following exact sequence of sheaves for all $j \geq 1$
+		\[
+		0 \to \mathcal{W}_{j-1} \sheaf{X} \to \mathcal{W}_{j} \xlongrightarrow {R^{j-1}} \sheaf{X} \to 0
+		\]
+		Hence we have exact sequence of groups
+		\[
+		H^{i}(X, \mathcal{W}_{j-1} \sheaf{X}) \to H^{i}(X, \mathcal{W}_{j} \sheaf{X}) \to H^{i}(X,\sheaf{X})
+		\]
+		If $H^i(X,\mathcal{W}_{j-1})=0$ and $1 \leq i \leq n-1$, then $H^i(X. \mathcal{W}_j \sheaf{X}) =0 $ since two sides of this sequence are zero. Hence by induction, we complete the proof.
+		\item We have following exact sequence 
+		\[
+		0 \simeq H^{n-1}(X, \mathcal{W}_{k-1}) \to H^n(X,\sheaf{X}) \to H^n(X,\mathcal{W}_k \sheaf{X}) \xlongrightarrow{R} H^n(X, \mathcal{W}_{k-1}\sheaf{X}) \to 0
+		\]
+		It implies $H^n(X,\sheaf{X}) = \ker \left(H^n(\mathcal{W}_k \sheaf{X}) \xlongrightarrow{R} H^n(X,\mathcal{W}_{k-1} \sheaf{X})\right)$.
+		\item Note that following diagram commutes for all $j>i$
+		\[
+		\begin{tikzcd}
+		H^n(X,\mathcal{W}_{j} \sheaf{X}) \arrow[r,"R^{j-i}",two heads] \arrow[d, "F"]& H^n(X,\mathcal{W}_i \sheaf{X}) \arrow[d, "F"]&\\
+		H^n(X,\mathcal{W}_j \sheaf{X}) \arrow[r, "R^{j-i}",two heads] &H^n(X, \mathcal{W}_i \sheaf{X})&
+		\end{tikzcd}
+		\]
+		Hence if left Frobenius map vanishes then so does right one.
+	\end{enumerate}
+\end{proof}
+
+\begin{proof}[Proof of theorem \ref{thm2.5}]
+	Let $h=h(\Phi_X)$. If $F$ is zero map on each $H^n(X,\mathcal{W}_{i} \sheaf{X})$, then $H^n(X,\mathcal{W}\sheaf{X})$ is $k$-vector space. But we have following exact sequence
+	\[
+	0 \to H^n(X,\mathcal{W}\sheaf{X}) \to H^n(X,\mathcal{W}\sheaf{X}) \to H^n(X,\sheaf{X}) \to 0
+	\]
+	and $H^n(X,\sheaf{X})$ is actually $k$-vector space. Hence $H^n(X,\mathcal{W} \sheaf{X})$ is not of finite dimension as $k$-vector space. Since $h= \rank _{W(k)} H^n(X,\mathcal{W}\sheaf{X})$, we can conclude that in this case $\Phi_X$ is of height $\infty$.
+	
+	Notice that 
+	\[
+	H^n(X,\mathcal{W} \sheaf{X}) \big/ VH^n(X,\mathcal{W}\sheaf{X}) \simeq H^n(X,\sheaf{X})
+	\]
+	as $W(k)$-module and $H^n(X,\sheaf{X})$ is naturally $k$-vector space, they are isomorphic as $k$-vector space. Hence from equality
+	\[
+	\rank_{W(k)}(D(\Phi_X)) = \dim_k H^n(X,\mathcal{W} \sheaf{X})\big/ FH^n(X,\mathcal{W} \sheaf{X}) + \dim_k H^n(X,\mathcal{W} \sheaf{X})\big/ V H^n(X,\mathcal{W} \sheaf{X})
+	\]
+	we get 
+	\[
+	\dim_k H^n(X,\mathcal{W} \sheaf{X})\big/ FH^n(X,\mathcal{W} \sheaf{X}) = h-1
+	\]
+	If $F:H^n(X,\mathcal{W}_i \sheaf{X}) \to H^n(X,\mathcal{W}_i \sheaf{X})$ is zero ,then projection
+	\[
+	[P_{i}]: H^n(X,\mathcal{W}\sheaf{X})\big/ FH^n(X,\mathcal{W} \sheaf{X}) \to H^n(X,\mathcal{W}_i \sheaf{X}) \big/FH^n(X,\mathcal{W}_i \sheaf{X})
+	\]
+	is well-defined and surjective since $R,F$ commutes. As vector space, $H^n(X,\mathcal{W}_i \sheaf{X})$ is of dimension $i$. This implies that we have inequality relation
+	\[
+	h \geq i+1
+	\]
+	Hence we get
+	\[
+	h \geq \min \big\{ i \geq 1 : [F: H^n(W_i \sheaf{X}) \to H^n(W_i \sheaf{X})] \neq 0 \big\}
+	\]
+	
+	Conversely, it is sufficient to prove $FH^n(X,\mathcal{W}_{h-1} \sheaf{X}) =0$. 
+
+	Manin's result in \cite{} implies that 
+	\begin{equation}
+		H^n(X,\mathcal{W} \sheaf{X}) \cong D(\Phi_X) \cong \frac{W(k)[F,V]}{(F - V^{h-1})} 
+	\end{equation}
+	Hence $FH^n(X,\mathcal{W} \sheaf{X}) \cong V^{h-1}H^n(X,\mathcal{W} \sheaf{X})$.
+		\[
+	\begin{tikzcd}
+	V^{h-1} H^n(X,\mathcal{W} \sheaf{X}) \arrow[r] \arrow[d, two heads]& H^n(X,\mathcal{W} \sheaf{X}) \arrow[d,two heads]& \\
+	0 =V^{h-1} H^n(X, \mathcal{W}_{h-1} \sheaf{X}) \arrow[r] & H^n(X,\mathcal{W}_{h-1} \sheaf{X})& 
+	\end{tikzcd}
+	\]
+	commutes, this implies $FH^n(X ,\mathcal{W}_{h-1} \sheaf{X}) =0$. 
+\end{proof}
+We will call $h(\Phi_X)$ the $h$-number of $X$, denoted by $h(X)$.
+
+\begin{seccor}
+For proper Calabi-Yau variety $X$ over perfect field $k$, we have $b(X)= \dim_k H^n(X,\mathcal{W} \sheaf{X})/F H^n(X,\mathcal{W}\sheaf{X})$. Furthermore,
+\[
+\dim_k H^{n-1}(X,B_m \Omega_X^1)=\dim_k H^n(X,B_m \Omega_X^1) = \begin{cases}
+\min \{m,h-1\}& \text{if } h < \infty\\
+m& \text{if } h = \infty
+\end{cases}
+\]	
+\end{seccor}
+
+\begin{proof}
+	We have exact sequence
+	\[
+	\mathcal{W}_m \sheaf{X} \xrightarrow{F} \mathcal{W}_m \sheaf{X} \xrightarrow{D_m} B_m \Omega_X^1 \to 0
+	\]
+	It induces 
+	\[
+	H^n(X,\mathcal{W}_m \sheaf{X}) \xrightarrow{F} H^n(X,\mathcal{W}_m \sheaf{X}) \to H^n(X,B_m \Omega_X^1) \to 0
+	\]
+	Taking limit with $m$, we get 
+	\[
+	H^n(X, \mathcal{W} \sheaf{X}) \xrightarrow{F} H^n(X,\mathcal{W} \sheaf{X}) \to H^n(X, B \Omega_X^1) \to 0
+	\]
+	exact. Hence $b(X)= h(X)-1$. 
+\end{proof}
+\input{frob.tex}
+\end{document}
