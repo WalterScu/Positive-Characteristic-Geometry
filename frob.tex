@@ -9,3 +9,27 @@
 	It is reasonable to expect thta the study of the above question should use a $p$-adic cohomology, and it dose. To describe, briefly, the know results, we introduce the \emph{Newton polygon} of a monotone increasing sequence $a_1, a_2, \cdots, a_m$ of non-negative rational numbers: by definition, it is the graph of the real-valued continuous piece-wise linear function $v_{a_1, a_2, \cdots a_m}$ on $[0,m]$ which takes the value $0$ at $0$ and whose derivate is the constant $a_j$ on the interval $(j-1,j)$.
 		
 	Now let $V/\mathcal{W}(k)$ be a smooth projective scheme. where $\mathcal{W}(k)$ is the ring of Witt vectors of $k$. Let $V/k$ be its reduction to $k$ through canonical morphism $ \spec (k) \to \spec(\mathcal{W}(k))$. Make the hypothesis that the de Rham cohomology of $V/k$ is extremely well-behaved: namely, $H^q(V/\mathcal{W}(k), \Omega^p)$ is a free $\mathcal{W}(k)$-module (whose rank we shall denote $h^{p,q}$-- the $(p,q)$-th Hodge number of $V/k$) for all $p,q$. Fix an integer $r$, and define the $r$-th Hodge polygon of $V/k$ to be the Newton polygon of the sequence of integers. 
+	\[
+	\underbrace{0,0,\cdots,0}_{h^{0,r}}, \ \ \underbrace{1,1,\cdots,1,}_{h^{1,r-1}}\ \ \underbrace{2,2,\cdots,2,}_{h^{2,r-2}},\ \ \cdots\ \ \underbrace{r,r,\cdots, r}_{h^{r,0}} 
+	\]
+	 Define the $r$-th Newton polygon of $V$ to be the Newton polygon of the sequence:
+	 \[
+	 \ord_q \alpha_1, \ord_q \alpha_2, \cdots, \ord_q \alpha_m\ \ (m= r\text{-th Betti number of  }V)
+	 \]
+	 where $\alpha_1, \cdots, \alpha_m \in \bar{K}$ are the complete set of eigenvalues (with multiplicities) of Frobenius acting on the $r$-dimensional $p$-adic cohomology of $V/k$; $\ord_q$ denotes the $p$-adic ord function normalized so that $\ord_q q =1$; and the $\alpha_j$ are indexed in such a manner that the above sequence is monotone increasing.
+	 
+	 What is known about the $r$-th Newton polygon of $V/k$ is the following:
+	 
+	 The $r$-th Newton polygon and the $r$-th Hodge polygon both end at the point $(m,rm/2)$ in the euclidean plane. The break-points (non-differentiable points) of these polygon occur at integral lattice points. The $r$-th Newton polygons lies in the closed region bounded by the $r$-th Hodge polygon, and the straight line joining $(0,0)$ and $(m,rm/2)$.
+	 
+	 Note: One has a further symmetry in the geometry of the Newton polygon implied by the strong Lefschetz theorem, and also the existence of algebraic cohomology classes in dimension $r$ implies that a part of the Newton polygon must have slope $r/2$.
+	 
+	 General remarks: It was an important discovery of Dwork, that (in a certain, unobvious, sense) the eigenvalues of Frobenius vary $p$-adic analytically if one varies the variety $V/k$ over a parameter space in characteristic $p$. A trace of this phenomenon may be seen in a theorem of Grothendieck: The Newton polygon rises under specialization of $V/k$.
+	 
+\subsection{Explicit description of Newton Polygon and Hodge Polygon}
+Let $H^n = H^n_{\text{crys}}(X/W)$ be torsion free.  Let 
+\begin{itemize}
+	\item $h^i= h^{i,n-i}= \dim_k H^{n-i}(X,\Omega_X^i)$
+	\item $a_i = \dim H^{n-i}(X,\mathcal{W} \Omega_X^i)/VH^{n-i}(X, \mathcal{W}\Omega_X^i)$
+	\item $a'_i = \dim H^{n-i}(X, \mathcal{W}\Omega_X^i)/F H^{n-i}(X,\mathcal{W}\Omega_X^i)$
+\end{itemize}
