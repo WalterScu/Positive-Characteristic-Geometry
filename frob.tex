@@ -33,3 +33,22 @@ Let $H^n = H^n_{\text{crys}}(X/W)$ be torsion free.  Let
 	\item $a_i = \dim H^{n-i}(X,\mathcal{W} \Omega_X^i)/VH^{n-i}(X, \mathcal{W}\Omega_X^i)$
 	\item $a'_i = \dim H^{n-i}(X, \mathcal{W}\Omega_X^i)/F H^{n-i}(X,\mathcal{W}\Omega_X^i)$
 \end{itemize}
+then 
+\[
+h^0 = a_0\ \ h^i=a'_{i-1} + a_i  (1 \leq i \leq n) \ \ a'_n=0
+\]
+and 
+\[
+\begin{aligned}
+&\text{Hdg}(t) = \begin{cases} (0,0) & t=0 \\
+(\sum_{i \leq t}h^i, \sum_{i\leq t} i h^i)& 1 \leq t \leq n+1\\
+\end{cases}\\
+&\text{Nwt}(t) = \begin{cases}
+(0,0)& t=0\\
+\text{Hdg}(t) +(a'_{t-1}, ta'_{t-1})& 1 \leq t \leq n+1\\
+\end{cases}
+\end{aligned}
+\]
+\begin{seccor}
+	If $H^j(X, \mathcal{W}\Omega_X^i)$ are all torsion-free, then $X$ being ordinary is equivalent to $\text{Nwt}(t) = \text{Hdg}(t)$.
+\end{seccor}
